@@ -1,3 +1,22 @@
+install notes
+=============
+
+add .env file
+PGRST_DB_URI=postgres://musicbrainz:musicbrainz@db:5432/musicbrainz_db
+
+start services
+docker-compose -f docker-compose.yml -f docker-compose.public.yml up -d
+
+populate db
+docker-compose run --rm musicbrainz /createdb.sh -fetch
+
+install psql
+apt install postgresql-client-10
+
+create indexes
+psql --host 127.0.0.1 --username musicbrainz -W -d musicbrainz_db -f CreatePrimaryKeys.sql
+psql --host 127.0.0.1 --username musicbrainz -W -d musicbrainz_db -f CreateIndexes.sql
+
 musicbrainz slave server with search and replication
 ==================
 
