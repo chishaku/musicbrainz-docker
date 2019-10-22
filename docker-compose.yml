@@ -20,7 +20,7 @@ services:
       - ./postgres-dockerfile/postgres.env
     volumes:
       - pgdata:/var/lib/postgresql/data
-    expose:
+    ports:
       - "5432:5432"
 
   musicbrainz:
