@@ -16,6 +16,7 @@ apt install postgresql-client-10
 create indexes
 psql --host 127.0.0.1 --username musicbrainz -W -d musicbrainz_db -f CreatePrimaryKeys.sql
 psql --host 127.0.0.1 --username musicbrainz -W -d musicbrainz_db -f CreateIndexes.sql
+psql --host 127.0.0.1 --username musicbrainz -W -d musicbrainz_db -f CreateFKConstraints.sql
 
 musicbrainz slave server with search and replication
 ==================
