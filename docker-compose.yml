@@ -42,6 +42,18 @@ services:
       - search
       - redis
 
+  postgrest:
+    container_name: postgrest
+    image: postgrest/postgrest:v5.2.0
+    ports:
+      - "9003:3000"
+    environment:
+      PGRST_DB_URI: ${PGRST_DB_URI}
+      PGRST_DB_SCHEMA: musicbrainz
+      PGRST_DB_ANON_ROLE: web_anon
+    depends_on:
+      - db
+
   indexer:
     build: indexer-dockerfile
     depends_on:
